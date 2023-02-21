@@ -5,16 +5,22 @@
 
 <ul>
   <% for post in @posts %>
-    <li>Title: <b><%= post["title"] %></b><br>
-    </b>Post description: <b><%= post["description"] %></b><br>
-    Posted on: <b><%= post["posted_on"] %></b></li><br>
+    <li>
+    Title: <b><%= post["title"] %></b><br>
+    Posted on: <b><%= post["posted_on"] %></b><br><br>
+    </b>Post description: <b><%= post["description"] %></b>
+    
+    </li><br>
   <% end %>
 </ul>
 
+<br>
+
 <p>
-  <a href="/posts/new?place_id=<%= @place["id"] %>">New Post</a>
+  <a href="/posts/new?place_id=<%= @place["id"] %>"><b>New Post</b></a>
 </p>
 
+<br>
 <p><a href="/places">Back to All Places</a></p>
 
 <p><%= button_to "Delete this place", @place, :method => "delete" %></p>
