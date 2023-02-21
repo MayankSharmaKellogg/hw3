@@ -1,0 +1,9 @@
+<h1>Places</h1>
+
+<h2><%= @place["name"] %></h2>
+
+
+
+<p><a href="/posts/new">New post for <%= place["name"]%></a></p>
+
+<p><%= button_to "Delete the place visited", @place, :method => "delete" %></p>

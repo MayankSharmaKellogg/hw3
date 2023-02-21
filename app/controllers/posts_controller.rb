@@ -1,22 +1,21 @@
-class PostsController < ApplicationController
-    def new
-      @place = Place.find(params[:place_id])
-      @post = Post.new(place_id: @place.id)
-    end
-  
-    def create
-      @place = Place.find(params[:place_id])
-      @post = @place.posts.new(post_params)
-      if @post.save
-        redirect_to @place, notice: 'Post was successfully created.'
-      else
-        render :new
+
+      class PostsController < ApplicationController
+
+        def index
+          @posts = Post.all
+        end
+      
+        def new
+          @post = Post.new
+        end
+      
+        def create
+          @post = Post.new
+          @post["title"] = params["post"]["title"]
+          @post["description"] = params["post"]["description"]
+          @post["posted_on"] = params["post"]["posted_on"]
+          @post.save
+          redirect_to "/posts"
+        end
+      
       end
-    end
-  
-    private
-  
-    def post_params
-      params.require(:post).permit(:title, :description, :date)
-    end
-  end
